@@ -76,8 +76,6 @@ PyInstaller can't cross-compile, so each OS has to be built on that OS. To build
 place, push the repo to GitHub and run the **build** workflow (`.github/workflows/build.yml`).
 It defaults to Windows, and you can pick `windows,macos,linux`.
 
-Optional: put `assets/icon.ico` (Windows) or `assets/icon.icns` (macOS) in place to brand the app.
-
 ## Managing the cache
 
 Run `cache.bat` (Windows) or `./cache.sh` with no arguments for a menu, or pass a mode:
