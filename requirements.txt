@@ -1,4 +1,4 @@
 # Runtime + build dependencies. Upper bounds avoid surprise breaking major releases.
 PySide6-Essentials>=6.6,<7
-certifi>=2024.2.2
+certifi>=2026.10.23
 pyinstaller>=6.3,<7
