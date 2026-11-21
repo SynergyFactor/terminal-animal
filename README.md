@@ -194,30 +194,6 @@ tests/                     python -m unittest discover -s tests  (no Qt or inter
 .github/workflows/         tests on every push/PR; builds (+ releases on v* tags)
 ```
 
-## Publishing to GitHub
-
-Run `publish.bat` (Windows) or `./publish.sh`. It walks you through everything:
-- checks Git is installed (and offers to install it on Windows) and that your name and email are set;
-- asks for your GitHub username and repository name, and checks the repository exists;
-- runs the tests and checks the bundled data and image attribution, offering to fix gaps;
-- keeps `.venv`, build output, raw datasets, secret-looking files and files over 100 MB out of
-  the upload;
-- commits, pushes, and explains sign-in, network or "repository not empty" problems. If the
-  repository only has GitHub's starter README/LICENSE, it offers to replace them, but only after
-  you type the repository name;
-- optionally tags a release.
-
-Use `publish.bat --check` to run every check without uploading. Run it again after later changes:
-it uploads only what changed.
-
-## Releasing
-
-Push a version tag, e.g. `git tag v1.3.0 && git push origin v1.3.0`. The **build** workflow tests
-and builds Windows, macOS and Linux, then attaches the three zips to a GitHub release. You can also
-run **build** manually from the Actions tab and choose targets. Optionally, set a repository variable
-`TV_CONTACT` (Settings → Secrets and variables → Actions → Variables) so CI scrapes identify
-themselves to Wikimedia.
-
 ## Troubleshooting
 
 The app writes a log to `%LOCALAPPDATA%\TerminalVelocity\TerminalVelocity.log`
