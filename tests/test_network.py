@@ -42,7 +42,7 @@ class FakeWiki(BaseHTTPRequestHandler):
         with FakeWiki.lock:
             FakeWiki.count += 1
             n = FakeWiki.count
-            FakeWiki.times.append(time.monotonic())
+            FakeWiki.times.append(time.perf_counter())   # same clock as the limiter
         if n <= FakeWiki.fail_first:
             self.send_response(429)
             self.send_header("Retry-After", "0")
@@ -72,7 +72,10 @@ class FakeWiki(BaseHTTPRequestHandler):
         if url.path == "/big":
             self.send_response(200)
             self.end_headers()
-            self.wfile.write(b"x" * 2_000_000)
+            try:
+                self.wfile.write(b"x" * 2_000_000)
+            except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+                pass                      # expected: the client stops reading at its size limit
             return
         if url.path == "/api-error":
             self._json({"error": {"code": "badtitle", "info": "Bad title"}})
@@ -134,13 +137,22 @@ class NetBase(unittest.TestCase):
 
 class ThrottleTests(NetBase):
     def test_requests_are_spaced(self):
+        """The throttle's guarantee, checked in ways scheduling delays can't distort.
+
+        Slow CI machines can pause a thread after the throttle releases it, so measuring when
+        threads *resume* is unreliable. Instead: (1) the slots the throttle hands out are exactly
+        one interval apart, and (2) no request reaches the server before its slot (a delay can
+        only make a request later, never earlier).
+        """
         interval = 0.15
         wiki.set_request_interval(interval)
-        slots, real_wait = [], wiki.LIMITER.wait
+        slots, lock, real_wait = [], threading.Lock(), wiki.LIMITER.wait
 
-        def recording_wait():                                  # when the throttle releases each request
-            real_wait()
-            slots.append(time.perf_counter())
+        def recording_wait():
+            slot = real_wait()
+            with lock:
+                slots.append(slot)
+            return slot
 
         with mock.patch.object(wiki.LIMITER, "wait", recording_wait):
             threads = [threading.Thread(target=wiki.fetch_animal, args=("Cat",)) for _ in range(3)]
@@ -151,12 +163,11 @@ class ThrottleTests(NetBase):
         self.assertEqual(len(FakeWiki.times), 9)               # page + Wikidata + image, x3
         slots.sort()
         gaps = [b - a for a, b in zip(slots, slots[1:])]
-        # The throttle itself: every release at least one interval apart, across threads.
-        self.assertTrue(all(g >= interval - 0.005 for g in gaps), gaps)
-        # On the wire, individual arrivals jitter with thread scheduling (notably on Windows),
-        # but the overall rate must still hold.
-        span = FakeWiki.times[-1] - FakeWiki.times[0]
-        self.assertGreaterEqual(span, (len(FakeWiki.times) - 1) * interval * 0.9)
+        self.assertTrue(all(g >= interval - 1e-6 for g in gaps), gaps)
+        arrivals = sorted(FakeWiki.times)
+        # i-th earliest arrival can't precede the i-th slot (each request waits for its own slot)
+        early = [(a, s) for a, s in zip(arrivals, slots) if a < s - 1e-3]
+        self.assertEqual(early, [], "requests reached the server before their slot")
 
     def test_429_is_retried(self):
         wiki.set_request_interval(0.05)

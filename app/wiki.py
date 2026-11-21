@@ -69,13 +69,15 @@ class RateLimiter:
         self._lock = threading.Lock()
         self._next = 0.0
 
-    def wait(self) -> None:
+    def wait(self) -> float:
+        """Block until this caller's slot; returns the slot time (time.perf_counter() clock)."""
         with self._lock:
             now = time.perf_counter()
             slot = max(now, self._next)
             self._next = slot + self.interval
         if slot > now:
             time.sleep(slot - now)
+        return slot
 
     def cooldown(self, seconds: float) -> None:
         """Pause everyone (used after a 429 so other threads back off too)."""

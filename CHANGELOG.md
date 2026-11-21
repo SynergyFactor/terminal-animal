@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.2
+- Tests: the request-spacing test no longer fails on slow or busy CI machines (macOS). It checks
+  the throttle's assigned slots and that no request arrives before its slot, which scheduling
+  delays can't distort.
+- Tests: no more harmless BrokenPipeError traceback in the log from the size-limit test.
+
 ## 1.3.1
 - Fix: Wikimedia moved thumbnails to `thumb.wikimedia.org`, which the image host check rejected;
   any `*.wikimedia.org` host is now accepted (HTTPS only).
