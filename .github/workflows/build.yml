@@ -1,0 +1,79 @@
+name: build
+on:
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: "Comma-separated: windows,macos,linux"
+        default: "windows"
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { target: windows, runner: windows-latest }
+          - { target: macos,   runner: macos-latest }
+          - { target: linux,   runner: ubuntu-latest }
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
+    steps:
+      - name: Skip unselected targets
+        id: sel
+        shell: bash
+        env:
+          # Passed via env (never interpolated into the script) to prevent shell injection.
+          TARGETS: ${{ github.event.inputs.targets || 'windows,macos,linux' }}
+          TARGET: ${{ matrix.target }}
+        run: |
+          if [[ ",${TARGETS// /}," == *",${TARGET},"* ]]; then echo "run=1" >> "$GITHUB_OUTPUT"; else echo "run=0" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/checkout@v4
+        if: steps.sel.outputs.run == '1'
+        with: { persist-credentials: false }
+      - uses: actions/setup-python@v5
+        if: steps.sel.outputs.run == '1'
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Test
+        if: steps.sel.outputs.run == '1'
+        run: python -m unittest discover -s tests
+      - name: Build
+        if: steps.sel.outputs.run == '1'
+        env:
+          TV_CONTACT: ${{ vars.TV_CONTACT }}     # optional repository variable
+        # The cache and trait index are committed, so only missing animals are scraped.
+        run: python build.py --os ${{ matrix.target }} --cache missing --fallback auto
+      - name: Package
+        if: steps.sel.outputs.run == '1'
+        shell: bash
+        run: |
+          cd dist
+          if [ "${{ matrix.target }}" = "windows" ]; then 7z a ../TerminalVelocity-windows.zip . > /dev/null
+          else zip -qry ../TerminalVelocity-${{ matrix.target }}.zip .; fi
+      - uses: actions/upload-artifact@v4
+        if: steps.sel.outputs.run == '1'
+        with:
+          name: TerminalVelocity-${{ matrix.target }}
+          path: TerminalVelocity-${{ matrix.target }}.zip
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write          # only this job can create the release
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: artifacts, merge-multiple: true }
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: gh release create "$TAG" artifacts/*.zip --repo "$GITHUB_REPOSITORY" --title "$TAG" --generate-notes

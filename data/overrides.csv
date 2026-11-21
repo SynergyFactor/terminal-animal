@@ -1,0 +1,3 @@
+# Hand-checked values used before any other source. mass in kg, length in m.
+# Cite where each value came from in the source column.
+title,scientific_name,mass_kg,length_m,source

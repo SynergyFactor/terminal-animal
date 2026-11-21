@@ -1,0 +1,16 @@
+# Normalise line endings; keep each script's native format.
+* text=auto
+*.py   text eol=lf
+*.sh   text eol=lf
+*.bat  text eol=crlf
+*.md   text eol=lf
+*.csv  text eol=lf
+*.yml  text eol=lf
+
+# Generated data: don't diff the single-line JSON; mark as generated for GitHub stats.
+data/animals.json   -diff linguist-generated=true
+data/ATTRIBUTION.md linguist-generated=true
+*.gz   binary
+*.png  binary
+*.ico  binary
+*.icns binary

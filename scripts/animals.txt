@@ -1,0 +1,156 @@
+# Animals bundled for offline use (150). One Wikipedia article title per line.
+# Mammals
+Cat
+Dog
+Human
+House mouse
+Brown rat
+Eastern gray squirrel
+Red squirrel
+Red fox
+Arctic fox
+Fennec fox
+Gray wolf
+Coyote
+Lion
+Tiger
+Cheetah
+Leopard
+Jaguar
+Cougar
+Snow leopard
+Eurasian lynx
+Bobcat
+Brown bear
+Polar bear
+American black bear
+Giant panda
+Red panda
+Raccoon
+Striped skunk
+Virginia opossum
+Red kangaroo
+Koala
+Common wombat
+Tasmanian devil
+European rabbit
+European hare
+Horse
+Donkey
+Cattle
+American bison
+Domestic pig
+Wild boar
+Sheep
+Goat
+Moose
+White-tailed deer
+Red deer
+Reindeer
+Giraffe
+Okapi
+Plains zebra
+Hippopotamus
+Black rhinoceros
+White rhinoceros
+African bush elephant
+Asian elephant
+Dromedary
+Llama
+Alpaca
+Chimpanzee
+Western gorilla
+Bornean orangutan
+Ring-tailed lemur
+Hedgehog
+European mole
+Little brown bat
+Common vampire bat
+Brown-throated sloth
+Golden hamster
+Guinea pig
+Eastern chipmunk
+North American beaver
+Capybara
+Meerkat
+Eurasian otter
+Sea otter
+Platypus
+Nine-banded armadillo
+Giant anteater
+Aardvark
+Spotted hyena
+Honey badger
+European badger
+Least weasel
+Ferret
+Groundhog
+North American porcupine
+Naked mole-rat
+Chinchilla
+# Birds
+House sparrow
+American robin
+European robin
+Rock dove
+Chicken
+Wild turkey
+Bald eagle
+Golden eagle
+Peregrine falcon
+Barn owl
+Snowy owl
+Common ostrich
+Emu
+Emperor penguin
+Mallard
+Canada goose
+Mute swan
+Ruby-throated hummingbird
+Common raven
+Blue jay
+Northern cardinal
+Budgerigar
+Scarlet macaw
+American flamingo
+Brown pelican
+Great blue heron
+Toco toucan
+Atlantic puffin
+# Reptiles & amphibians
+Green iguana
+Komodo dragon
+Saltwater crocodile
+American alligator
+Green sea turtle
+Galápagos tortoise
+Ball python
+King cobra
+Common chameleon
+Leopard gecko
+Common frog
+Cane toad
+American bullfrog
+Axolotl
+# Fish (out of water)
+Goldfish
+Atlantic salmon
+Great white shark
+# Invertebrates
+Ant
+Western honey bee
+Housefly
+Monarch butterfly
+Garden snail
+Domestic silk moth
+Seven-spot ladybird
+Goliath birdeater
+House centipede
+Common earthworm
+Desert locust
+Emperor scorpion
+Coconut crab
+American lobster
+Common octopus
+Stag beetle
+Goliath beetle

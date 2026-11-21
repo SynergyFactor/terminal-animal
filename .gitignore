@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Build output
+build/
+dist/
+*.spec
+
+# Raw fallback datasets (downloaded at build time; large)
+sources/
+
+# Temporary / backup files written by the cache tools
+data/*.tmp
+data/*.bak
+*.part
+
+# Local settings and secrets
+.env
+.env.*
+*.local
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
