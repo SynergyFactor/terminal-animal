@@ -91,7 +91,8 @@ Run `cache.bat` (Windows) or `./cache.sh` with no arguments for a menu, or pass 
 | `cache.bat --clear-user` | Delete the app's local cache of animals looked up live |
 | `cache.bat --mode apply` | Re-apply overrides and fallback databases to cached animals (offline) |
 | `cache.bat --mode fallback` | Download the fallback databases and rebuild the trait index |
-| `cache.bat --status` | Show what's cached, what's missing and where each mass came from |
+| `cache.bat --status` | Show what's cached, what's missing, where each mass came from, and why any pictures are missing |
+| `cache.bat --diagnose "Cat"` | Show step by step what Wikipedia returns for one animal's picture |
 
 Progress is saved every 5 animals, so you can stop with Ctrl+C and resume with `--mode missing` or
 `--mode stale`. The app has its own flags too: `TerminalVelocity.exe --clear-cache` and

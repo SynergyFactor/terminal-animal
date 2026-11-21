@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.3.1
+- Fix: Wikimedia moved thumbnails to `thumb.wikimedia.org`, which the image host check rejected;
+  any `*.wikimedia.org` host is now accepted (HTTPS only).
+- Fix: pictures could be skipped silently (149 of 150 bundled animals had none). Every missing
+  picture now records why (`image_status`). Protocol-relative image links are accepted, and
+  Wikipedia's summary service is used as a second source for the picture. Entries without a
+  picture are refreshed by `--mode stale`.
+- New: `python scripts/build_cache.py --diagnose "Cat"` shows what Wikipedia returns for a picture.
+- `publish.py` now checks for outdated entries and missing pictures before uploading.
+- Fix: `publish.py` didn't recognise the project folder when its path was spelled differently
+  (symlinks, Windows short names, OneDrive), which made the macOS and Windows CI builds fail.
+- Fix: GitHub's private-email block (GH007) was misreported as "repository has other work";
+  publish now switches to your noreply address and retries.
+- CI: actions updated to Node.js 24 versions; tests also run on macOS.
+- Windows `.bat` files use Windows line endings.
+
 ## 1.3.0
 - `publish.py` (publish.bat / publish.sh): guided, checked upload to GitHub.
 - Security hardening:

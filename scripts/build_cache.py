@@ -124,12 +124,36 @@ def find_key(cache: dict, name: str) -> str | None:
 is_stale = wiki.is_stale
 
 
+def diagnose(title: str) -> int:
+    """Show step by step what Wikipedia returns for one animal's picture."""
+    import json as _json
+    print(f"Diagnosing the picture for '{title}' (User-Agent: {wiki.USER_AGENT})")
+    data = wiki._get_json(wiki.API, {
+        "action": "query", "format": "json", "formatversion": 2, "redirects": 1,
+        "prop": "pageimages|info", "piprop": "thumbnail|name", "pithumbsize": wiki.THUMB_WIDTH,
+        "inprop": "url", "titles": title})
+    pages = (data.get("query") or {}).get("pages") or [{}]
+    page = pages[0] if isinstance(pages[0], dict) else {}
+    print("1. Page lookup:", _json.dumps({k: page.get(k) for k in ("title", "missing", "pageimage",
+                                                                    "thumbnail")}, ensure_ascii=True))
+    print("2. Summary-service thumbnail:", wiki._rest_thumbnail(page.get("title") or title) or "(none)")
+    image, name, state = wiki.fetch_image(page, page.get("title") or title)
+    print("3. Result:", state, f"| file: {name}" if name else "",
+          f"| {len(image):,} bytes, {wiki._image_kind(image)}" if image else "")
+    return 0 if state in ("ok", "none_on_wikipedia") else 1
+
+
 def status() -> None:
     names = read_list(LIST)
     cache = load(OUT)
     have = [n for n in names if find_key(cache, n)]
     stale = [n for n in have if is_stale(cache[find_key(cache, n)])]
     no_mass = [r["title"] for r in cache.values() if not r.get("mass_kg")]
+    no_image: dict[str, int] = {}
+    for r in cache.values():
+        if not r.get("image"):
+            k = str(r.get("image_status") or "unknown (older version)").split(":")[0]
+            no_image[k] = no_image.get(k, 0) + 1
     origins: dict[str, int] = {}
     for r in cache.values():
         o = (r.get("mass_origin") or "unknown").split(" (")[0]
@@ -140,6 +164,9 @@ def status() -> None:
           f"{len(names) - len(have)} missing, {len(stale)} outdated or with a failed image download.")
     if origins:
         print("  Mass came from: " + ", ".join(f"{k} {v}" for k, v in sorted(origins.items(), key=lambda x: -x[1])))
+    if no_image:
+        print(f"  Without a picture: {sum(no_image.values())} (" +
+              ", ".join(f"{k} {v}" for k, v in no_image.items()) + ")  -> --mode stale retries them")
     if no_mass:
         print(f"  No mass in any source: {', '.join(sorted(no_mass))}  (add them to data/overrides.csv)")
     idx = traits.index()
@@ -244,7 +271,7 @@ def scrape(mode: str, delay: float) -> int:
             done += 1
             mass = f"{rec['mass_kg']:.4g} kg" if rec["mass_kg"] else "no mass found"
             origin = f"  [{rec.get('mass_origin')}]" if rec.get("mass_origin") not in (None, "", "Wikipedia") else ""
-            img = "" if rec["image"] else "  (no image)"
+            img = "" if rec["image"] else f"  (no image: {rec.get('image_status', '?')})"
             print(f"  [{i}/{len(names_)}] {rec['title']:<28} {mass}{origin}{img}", flush=True)
             if rec["image_failed"]:
                 missed.append(name)
@@ -305,6 +332,7 @@ def _main(argv: list[str] | None = None) -> int:
     ap.add_argument("--mode", choices=["missing", "stale", "update", "rebuild", "apply", "fallback", "skip"])
     ap.add_argument("--clear-user", action="store_true", help="delete the app's local lookup cache")
     ap.add_argument("--status", action="store_true")
+    ap.add_argument("--diagnose", metavar="TITLE", help="show what Wikipedia returns for one animal's picture")
     ap.add_argument("--delay", type=float, default=1.0,
                     help="seconds between requests (default 1.0; raise it if you still see 429s)")
     ap.add_argument("--list", type=Path, help="alternative animal list file")
@@ -314,6 +342,8 @@ def _main(argv: list[str] | None = None) -> int:
     if args.list:
         LIST = args.list
 
+    if args.diagnose:
+        return diagnose(args.diagnose)
     if args.status:
         status()
     if args.clear_user:

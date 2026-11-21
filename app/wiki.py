@@ -38,7 +38,7 @@ TIMEOUT = 15
 MAX_JSON_BYTES = 8 * 1024 * 1024        # API responses (a long article's text is ~100-300 KB)
 MAX_IMAGE_BYTES = 5 * 1024 * 1024       # 330 px thumbnails are ~20-60 KB
 MAX_DOWNLOAD_BYTES = 300 * 1024 * 1024  # dataset archives (scripts/fallback_data.py)
-IMAGE_HOSTS = ("upload.wikimedia.org",)
+IMAGE_DOMAIN = "wikimedia.org"         # thumbnails: upload.wikimedia.org, thumb.wikimedia.org, ...
 LOCAL_TEST_HOSTS = {"127.0.0.1", "localhost"}   # plain http allowed only for the test suite
 
 
@@ -195,11 +195,64 @@ def _image_kind(data: bytes) -> str | None:
     return None
 
 
+REST_SUMMARY = "https://en.wikipedia.org/api/rest_v1/page/summary/"
+
+
+def _normalise_image_url(url: str) -> str:
+    """Wikimedia sometimes returns protocol-relative links (//upload.wikimedia.org/...)."""
+    url = url.strip()
+    return "https:" + url if url.startswith("//") else url
+
+
+def _file_name_from_thumb(url: str) -> str | None:
+    """'.../thumb/a/ab/Some_file.jpg/330px-Some_file.jpg' -> 'Some_file.jpg' (for attribution)."""
+    parts = urllib.parse.urlsplit(url).path.split("/")
+    if "thumb" in parts and len(parts) >= 2:
+        return urllib.parse.unquote(parts[-2]) or None
+    return urllib.parse.unquote(parts[-1]) or None if parts else None
+
+
+def _rest_thumbnail(title: str) -> str:
+    """Thumbnail URL from Wikipedia's summary service (a second source for the lead image)."""
+    try:
+        data = _get_json(REST_SUMMARY + urllib.parse.quote(title.replace(" ", "_"), safe=""), retries=2)
+    except Exception:  # noqa: BLE001 - optional fallback
+        return ""
+    return _str((data.get("thumbnail") or {}).get("source"), 1000)
+
+
+def fetch_image(page: dict, title: str) -> tuple[bytes | None, str | None, str]:
+    """Download the article's lead image. Returns (bytes, file name, status).
+
+    status: "ok", "none_on_wikipedia", "blocked_host:<host>", "not_an_image", "download_failed:<why>".
+    A missing picture is never silent: the status says why, and only "none_on_wikipedia" is final.
+    """
+    img_url = _normalise_image_url(_str((page.get("thumbnail") or {}).get("source"), 1000))
+    file_name = _str(page.get("pageimage"), 300) or None
+    if not img_url:
+        img_url = _normalise_image_url(_rest_thumbnail(title))
+        file_name = file_name or (_file_name_from_thumb(img_url) if img_url else None)
+    if not img_url:
+        return None, None, "none_on_wikipedia"
+    if not _image_url_ok(img_url):
+        host = urllib.parse.urlsplit(img_url).hostname or "?"
+        return None, None, f"blocked_host:{host}"
+    try:
+        blob = _get(img_url, max_bytes=MAX_IMAGE_BYTES)
+    except (OSError, ValueError, http.client.HTTPException) as e:
+        return None, None, f"download_failed:{str(e)[:120]}"
+    if not _image_kind(blob):
+        return None, None, "not_an_image"
+    return blob, file_name or _file_name_from_thumb(img_url), "ok"
+
+
 def _image_url_ok(url: str) -> bool:
     parts = urllib.parse.urlsplit(url)
     if parts.scheme == "http" and parts.hostname in LOCAL_TEST_HOSTS:
         return True
-    return parts.scheme == "https" and parts.hostname in IMAGE_HOSTS
+    host = (parts.hostname or "").lower()
+    # Any Wikimedia-run host (Wikimedia moves thumbnails between subdomains), HTTPS only.
+    return parts.scheme == "https" and (host == IMAGE_DOMAIN or host.endswith("." + IMAGE_DOMAIN))
 
 
 # -- Search --------------------------------------------------------------------------------------
@@ -257,18 +310,10 @@ def fetch_animal(title: str, with_image: bool = True) -> dict:
         except Exception:  # noqa: BLE001 - fallback data is best-effort
             facts = {}
 
-    image, image_failed = None, False
-    img_url = _str((page.get("thumbnail") or {}).get("source"), 1000)
-    image_file = _str(page.get("pageimage"), 300) or None
-    if with_image and img_url and _image_url_ok(img_url):
-        try:
-            blob = _get(img_url, max_bytes=MAX_IMAGE_BYTES)
-            if _image_kind(blob):
-                image = blob
-            else:
-                image_failed = True
-        except (OSError, ValueError, http.client.HTTPException):
-            image_failed = True
+    image, image_file, image_status = None, None, "skipped"
+    if with_image:
+        image, image_file, image_status = fetch_image(page, _str(page.get("title"), 300) or title)
+    image_failed = image_status not in ("ok", "none_on_wikipedia", "skipped")
     url = _str(page.get("fullurl"), 1000)
 
     rec = {
@@ -277,6 +322,7 @@ def fetch_animal(title: str, with_image: bool = True) -> dict:
         "summary": short_summary(lead),
         "url": url if is_wikipedia_url(url) else "",
         "image_file": image_file if image else None,
+        "image_status": image_status,
         "wiki_mass_kg": mass, "wiki_mass_source": mass_src,
         "wiki_length_m": length, "wiki_length_source": length_src,
         "qid": qid, "sci_name": facts.get("sci_name"), "rank": facts.get("rank"),
@@ -368,7 +414,10 @@ def is_stale(rec: dict) -> bool:
         return True
     if rec.get("image_failed"):
         return True
-    return bool(rec.get("image")) and "image_file" not in rec      # pre-attribution record
+    if not rec.get("image"):
+        # No picture: refetch unless Wikipedia genuinely has none for this article.
+        return rec.get("image_status") != "none_on_wikipedia"
+    return "image_file" not in rec                                  # pre-attribution record
 
 
 def short_summary(extract: str, max_chars: int = 420) -> str:

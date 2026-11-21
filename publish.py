@@ -158,8 +158,18 @@ def git_out(*args: str) -> str:
 
 
 def is_repo() -> bool:
+    """True if the project folder itself is the top of a Git repository.
+
+    Compared with samefile(), because the same folder can be spelled differently: symlinks
+    (macOS /var -> /private/var), Windows short names (RUNNER~1), drive letter case, OneDrive.
+    """
     r = git("rev-parse", "--show-toplevel", check=False)
-    return r.returncode == 0 and Path(r.stdout.strip()).resolve() == ROOT
+    if r.returncode != 0 or not r.stdout.strip():
+        return False
+    try:
+        return os.path.samefile(r.stdout.strip(), ROOT)
+    except OSError:
+        return False
 
 
 def has_commits() -> bool:
@@ -285,13 +295,20 @@ def check_data() -> None:
         warn("data/traits.json.gz (fallback size data) is missing; gaps will rely on Wikidata.")
         info("To add it: python scripts/fallback_data.py")
 
-    unattributed = [r for r in recs if r.get("image") and "image_file" not in r]
+    try:
+        from app.wiki import is_stale
+    except Exception:  # noqa: BLE001
+        def is_stale(r):
+            return bool(r.get("image")) and "image_file" not in r
+    outdated = [r for r in recs if is_stale(r)]
+    no_picture = sum(1 for r in outdated if not r.get("image"))
     attribution = ROOT / "data" / "ATTRIBUTION.md"
-    if unattributed:
-        warn(f"{len(unattributed)} cached images don't record their source file page yet, so "
-             "data/ATTRIBUTION.md would be incomplete.")
-        info("Wikipedia text and images must be credited when shared. Fixing this re-downloads "
-             f"those entries (about {max(1, len(unattributed) * 3 // 60)} min).")
+    if outdated:
+        warn(f"{len(outdated)} bundled animals need refreshing"
+             + (f", including {no_picture} without a picture" if no_picture else "")
+             + " (outdated, missing a picture, or missing image attribution).")
+        info("Fixing this re-downloads those entries (about "
+             f"{max(1, len(outdated) * 3 // 60)} min) and updates data/ATTRIBUTION.md.")
         if confirm("Fix it now?", default=True):
             if not os.environ.get("TV_CONTACT"):
                 contact = ask("Contact email for Wikimedia (sent with requests)", default="unset")

@@ -23,7 +23,8 @@ ARTICLE = ("The test cat is a small mammal.\nAdult test cats typically weigh 4â€
 
 class FakeWiki(BaseHTTPRequestHandler):
     fail_first = 0          # respond 429 to this many requests first
-    thumb = None            # override the thumbnail URL the fake API reports
+    thumb = None            # override the thumbnail URL the fake API reports (False = no thumbnail)
+    rest_thumb = None       # thumbnail the fake summary service reports
     times: list = []
     count = 0
     lock = threading.Lock()
@@ -59,6 +60,9 @@ class FakeWiki(BaseHTTPRequestHandler):
             self.send_response(200)
             self.end_headers()
             self.wfile.write(body)
+            return
+        if url.path.startswith("/rest/"):
+            self._json({"thumbnail": {"source": FakeWiki.rest_thumb}} if FakeWiki.rest_thumb else {})
             return
         if url.path == "/redirect-to-http":
             self.send_response(302)
@@ -96,9 +100,10 @@ class FakeWiki(BaseHTTPRequestHandler):
                 "title": title, "description": "test animal", "extract": ARTICLE,
                 "fullurl": f"https://en.wikipedia.org/wiki/{title}",
                 "pageprops": {"wikibase_item": "Q42"},
-                "thumbnail": {"source": FakeWiki.thumb or
-                              f"http://127.0.0.1:{self.server.server_port}/img.jpg"},
-                "pageimage": "Test_cat.jpg",
+                **({} if FakeWiki.thumb is False else {
+                    "thumbnail": {"source": FakeWiki.thumb or
+                                  f"http://127.0.0.1:{self.server.server_port}/img.jpg"},
+                    "pageimage": "Test_cat.jpg"}),
             }]}}).encode()
         self.send_response(200)
         self.end_headers()
@@ -110,7 +115,8 @@ class NetBase(unittest.TestCase):
     def setUpClass(cls):
         cls.srv = ThreadingHTTPServer(("127.0.0.1", 0), FakeWiki)
         threading.Thread(target=cls.srv.serve_forever, daemon=True).start()
-        cls.old_api, cls.old_wd = wiki.API, wiki.WIKIDATA
+        cls.old_api, cls.old_wd, cls.old_rest = wiki.API, wiki.WIKIDATA, wiki.REST_SUMMARY
+        wiki.REST_SUMMARY = f"http://127.0.0.1:{cls.srv.server_port}/rest/"
         wiki.API = f"http://127.0.0.1:{cls.srv.server_port}/w/api.php"
         wiki.WIKIDATA = f"http://127.0.0.1:{cls.srv.server_port}/wd/api.php"
         wiki.BACKOFF_BASE = 0.2
@@ -118,10 +124,11 @@ class NetBase(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.srv.shutdown()
-        wiki.API, wiki.WIKIDATA = cls.old_api, cls.old_wd
+        wiki.API, wiki.WIKIDATA, wiki.REST_SUMMARY = cls.old_api, cls.old_wd, cls.old_rest
 
     def setUp(self):
         FakeWiki.count, FakeWiki.times, FakeWiki.fail_first, FakeWiki.thumb = 0, [], 0, None
+        FakeWiki.rest_thumb = None
         wiki.LIMITER._next = 0.0
 
 
@@ -206,6 +213,7 @@ class HardeningTests(NetBase):
         rec = wiki.fetch_animal("Cat")
         self.assertIsNone(rec["image"])
         self.assertEqual(FakeWiki.count, 2)                 # article + Wikidata only
+        self.assertEqual(rec["image_status"], "blocked_host:evil.example.com")
 
     def test_link_and_contact_sanitising(self):
         self.assertTrue(wiki.is_wikipedia_url("https://en.wikipedia.org/wiki/Cat"))
@@ -216,6 +224,57 @@ class HardeningTests(NetBase):
             c = wiki._contact()
         self.assertNotIn("\n", c)
         self.assertTrue(c.isascii() and "(" not in c and ";" not in c)
+
+
+class ImageTests(NetBase):
+    def setUp(self):
+        super().setUp()
+        wiki.set_request_interval(0.01)
+
+    def test_summary_service_fallback(self):
+        FakeWiki.thumb = False
+        FakeWiki.rest_thumb = (f"http://127.0.0.1:{self.srv.server_port}"
+                               "/wikipedia/commons/thumb/a/ab/Felis_catus.jpg/330px-Felis_catus.jpg")
+        rec = wiki.fetch_animal("Cat")
+        self.assertEqual((rec["image"], rec["image_status"]), (JPEG, "ok"))
+        self.assertEqual(rec["image_file"], "Felis_catus.jpg")
+        self.assertFalse(wiki.is_stale(rec))
+
+    def test_no_picture_anywhere_is_final(self):
+        FakeWiki.thumb = False
+        rec = wiki.fetch_animal("Cat")
+        self.assertEqual(rec["image_status"], "none_on_wikipedia")
+        self.assertFalse(rec["image_failed"])
+        self.assertFalse(wiki.is_stale(rec))                    # not retried forever
+
+    def test_blocked_host_is_reported_and_retried(self):
+        FakeWiki.thumb = "https://evil.example.com/x.jpg"
+        rec = wiki.fetch_animal("Cat")
+        self.assertEqual(rec["image_status"], "blocked_host:evil.example.com")
+        self.assertTrue(rec["image_failed"])
+        self.assertTrue(wiki.is_stale(rec))
+
+    def test_url_forms(self):
+        self.assertEqual(wiki._normalise_image_url("//upload.wikimedia.org/a.jpg"),
+                         "https://upload.wikimedia.org/a.jpg")
+        self.assertTrue(wiki._image_url_ok(wiki._normalise_image_url("//upload.wikimedia.org/a.jpg")))
+        # The address Wikimedia returns as of Nov 2026 (from --diagnose "Cat"):
+        thumb = ("https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Siam_lilacpoint.jpg/"
+                 "330px-Siam_lilacpoint.jpg?utm_source=en.wikipedia.org&utm_campaign=api")
+        self.assertTrue(wiki._image_url_ok(thumb))
+        self.assertEqual(wiki._file_name_from_thumb(thumb), "Siam_lilacpoint.jpg")
+        for bad in ("http://thumb.wikimedia.org/a.jpg", "https://wikimedia.org.evil.com/a.jpg",
+                    "https://evilwikimedia.org/a.jpg", "https://example.com/wikimedia.org/a.jpg"):
+            self.assertFalse(wiki._image_url_ok(bad), bad)
+        self.assertEqual(wiki._file_name_from_thumb(
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/330px-Cat03.jpg"), "Cat03.jpg")
+        self.assertEqual(wiki._file_name_from_thumb(
+            "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat%2003.jpg"), "Cat 03.jpg")
+
+    def test_old_records_without_picture_are_refetched(self):
+        base = {"title": "Cat", "parser_version": wiki.PARSER_VERSION, "image": None}
+        self.assertTrue(wiki.is_stale({**base, "image_file": None}))          # 1.3.0 silent skip
+        self.assertFalse(wiki.is_stale({**base, "image_status": "none_on_wikipedia"}))
 
 
 class DownloadTests(NetBase):

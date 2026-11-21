@@ -10,153 +10,153 @@ data sources are credited in NOTICE.md.
 
 | Animal | Article | Image |
 |---|---|---|
-| Aardvark | [Wikipedia](https://en.wikipedia.org/wiki/Aardvark) | — |
-| African bush elephant | [Wikipedia](https://en.wikipedia.org/wiki/African_bush_elephant) | — |
-| Alpaca | [Wikipedia](https://en.wikipedia.org/wiki/Alpaca) | — |
-| American alligator | [Wikipedia](https://en.wikipedia.org/wiki/American_alligator) | — |
-| American bison | [Wikipedia](https://en.wikipedia.org/wiki/American_bison) | — |
-| American black bear | [Wikipedia](https://en.wikipedia.org/wiki/American_black_bear) | — |
-| American bullfrog | [Wikipedia](https://en.wikipedia.org/wiki/American_bullfrog) | — |
-| American flamingo | [Wikipedia](https://en.wikipedia.org/wiki/American_flamingo) | — |
-| American lobster | [Wikipedia](https://en.wikipedia.org/wiki/American_lobster) | — |
-| American robin | [Wikipedia](https://en.wikipedia.org/wiki/American_robin) | — |
-| Ant | [Wikipedia](https://en.wikipedia.org/wiki/Ant) | — |
-| Arctic fox | [Wikipedia](https://en.wikipedia.org/wiki/Arctic_fox) | — |
-| Asian elephant | [Wikipedia](https://en.wikipedia.org/wiki/Asian_elephant) | — |
-| Atlantic puffin | [Wikipedia](https://en.wikipedia.org/wiki/Atlantic_puffin) | — |
-| Atlantic salmon | [Wikipedia](https://en.wikipedia.org/wiki/Atlantic_salmon) | — |
-| Axolotl | [Wikipedia](https://en.wikipedia.org/wiki/Axolotl) | — |
-| Bald eagle | [Wikipedia](https://en.wikipedia.org/wiki/Bald_eagle) | — |
-| Ball python | [Wikipedia](https://en.wikipedia.org/wiki/Ball_python) | — |
-| Barn owl | [Wikipedia](https://en.wikipedia.org/wiki/Barn_owl) | — |
-| Black rhinoceros | [Wikipedia](https://en.wikipedia.org/wiki/Black_rhinoceros) | — |
-| Blue jay | [Wikipedia](https://en.wikipedia.org/wiki/Blue_jay) | — |
-| Bobcat | [Wikipedia](https://en.wikipedia.org/wiki/Bobcat) | — |
-| Bombyx mori | [Wikipedia](https://en.wikipedia.org/wiki/Bombyx_mori) | — |
-| Bornean orangutan | [Wikipedia](https://en.wikipedia.org/wiki/Bornean_orangutan) | — |
-| Brown bear | [Wikipedia](https://en.wikipedia.org/wiki/Brown_bear) | — |
-| Brown pelican | [Wikipedia](https://en.wikipedia.org/wiki/Brown_pelican) | — |
-| Brown rat | [Wikipedia](https://en.wikipedia.org/wiki/Brown_rat) | — |
-| Brown-throated sloth | [Wikipedia](https://en.wikipedia.org/wiki/Brown-throated_sloth) | — |
-| Budgerigar | [Wikipedia](https://en.wikipedia.org/wiki/Budgerigar) | — |
-| Canada goose | [Wikipedia](https://en.wikipedia.org/wiki/Canada_goose) | — |
-| Cane toad | [Wikipedia](https://en.wikipedia.org/wiki/Cane_toad) | — |
-| Capybara | [Wikipedia](https://en.wikipedia.org/wiki/Capybara) | — |
-| Cat | [Wikipedia](https://en.wikipedia.org/wiki/Cat) | — |
-| Cattle | [Wikipedia](https://en.wikipedia.org/wiki/Cattle) | — |
-| Cheetah | [Wikipedia](https://en.wikipedia.org/wiki/Cheetah) | — |
-| Chicken | [Wikipedia](https://en.wikipedia.org/wiki/Chicken) | — |
-| Chimpanzee | [Wikipedia](https://en.wikipedia.org/wiki/Chimpanzee) | — |
-| Chinchilla | [Wikipedia](https://en.wikipedia.org/wiki/Chinchilla) | — |
-| Coccinella septempunctata | [Wikipedia](https://en.wikipedia.org/wiki/Coccinella_septempunctata) | — |
-| Coconut crab | [Wikipedia](https://en.wikipedia.org/wiki/Coconut_crab) | — |
-| Common chameleon | [Wikipedia](https://en.wikipedia.org/wiki/Common_chameleon) | — |
-| Common frog | [Wikipedia](https://en.wikipedia.org/wiki/Common_frog) | — |
-| Common octopus | [Wikipedia](https://en.wikipedia.org/wiki/Common_octopus) | — |
-| Common ostrich | [Wikipedia](https://en.wikipedia.org/wiki/Common_ostrich) | — |
-| Common raven | [Wikipedia](https://en.wikipedia.org/wiki/Common_raven) | — |
-| Common vampire bat | [Wikipedia](https://en.wikipedia.org/wiki/Common_vampire_bat) | — |
-| Common wombat | [Wikipedia](https://en.wikipedia.org/wiki/Common_wombat) | — |
-| Cornu aspersum | [Wikipedia](https://en.wikipedia.org/wiki/Cornu_aspersum) | — |
-| Cougar | [Wikipedia](https://en.wikipedia.org/wiki/Cougar) | — |
-| Coyote | [Wikipedia](https://en.wikipedia.org/wiki/Coyote) | — |
-| Desert locust | [Wikipedia](https://en.wikipedia.org/wiki/Desert_locust) | — |
-| Dog | [Wikipedia](https://en.wikipedia.org/wiki/Dog) | — |
-| Donkey | [Wikipedia](https://en.wikipedia.org/wiki/Donkey) | — |
-| Dromedary | [Wikipedia](https://en.wikipedia.org/wiki/Dromedary) | — |
-| Eastern chipmunk | [Wikipedia](https://en.wikipedia.org/wiki/Eastern_chipmunk) | — |
-| Eastern gray squirrel | [Wikipedia](https://en.wikipedia.org/wiki/Eastern_gray_squirrel) | — |
-| Emperor penguin | [Wikipedia](https://en.wikipedia.org/wiki/Emperor_penguin) | — |
-| Emperor scorpion | [Wikipedia](https://en.wikipedia.org/wiki/Emperor_scorpion) | — |
-| Emu | [Wikipedia](https://en.wikipedia.org/wiki/Emu) | — |
-| Eurasian lynx | [Wikipedia](https://en.wikipedia.org/wiki/Eurasian_lynx) | — |
-| Eurasian otter | [Wikipedia](https://en.wikipedia.org/wiki/Eurasian_otter) | — |
-| European badger | [Wikipedia](https://en.wikipedia.org/wiki/European_badger) | — |
-| European hare | [Wikipedia](https://en.wikipedia.org/wiki/European_hare) | — |
-| European mole | [Wikipedia](https://en.wikipedia.org/wiki/European_mole) | — |
-| European rabbit | [Wikipedia](https://en.wikipedia.org/wiki/European_rabbit) | — |
-| European robin | [Wikipedia](https://en.wikipedia.org/wiki/European_robin) | — |
-| Fennec fox | [Wikipedia](https://en.wikipedia.org/wiki/Fennec_fox) | — |
-| Ferret | [Wikipedia](https://en.wikipedia.org/wiki/Ferret) | — |
-| Galápagos tortoise | [Wikipedia](https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise) | — |
-| Giant anteater | [Wikipedia](https://en.wikipedia.org/wiki/Giant_anteater) | — |
-| Giant panda | [Wikipedia](https://en.wikipedia.org/wiki/Giant_panda) | — |
-| Giraffe | [Wikipedia](https://en.wikipedia.org/wiki/Giraffe) | — |
-| Goat | [Wikipedia](https://en.wikipedia.org/wiki/Goat) | — |
-| Golden eagle | [Wikipedia](https://en.wikipedia.org/wiki/Golden_eagle) | — |
-| Golden hamster | [Wikipedia](https://en.wikipedia.org/wiki/Golden_hamster) | — |
-| Goldfish | [Wikipedia](https://en.wikipedia.org/wiki/Goldfish) | — |
-| Goliath birdeater | [Wikipedia](https://en.wikipedia.org/wiki/Goliath_birdeater) | — |
-| Goliathus | [Wikipedia](https://en.wikipedia.org/wiki/Goliathus) | — |
-| Great blue heron | [Wikipedia](https://en.wikipedia.org/wiki/Great_blue_heron) | — |
-| Great white shark | [Wikipedia](https://en.wikipedia.org/wiki/Great_white_shark) | — |
-| Green iguana | [Wikipedia](https://en.wikipedia.org/wiki/Green_iguana) | — |
-| Green sea turtle | [Wikipedia](https://en.wikipedia.org/wiki/Green_sea_turtle) | — |
-| Groundhog | [Wikipedia](https://en.wikipedia.org/wiki/Groundhog) | — |
-| Guinea pig | [Wikipedia](https://en.wikipedia.org/wiki/Guinea_pig) | — |
-| Hedgehog | [Wikipedia](https://en.wikipedia.org/wiki/Hedgehog) | — |
-| Hippopotamus | [Wikipedia](https://en.wikipedia.org/wiki/Hippopotamus) | — |
-| Honey badger | [Wikipedia](https://en.wikipedia.org/wiki/Honey_badger) | — |
-| Horse | [Wikipedia](https://en.wikipedia.org/wiki/Horse) | — |
+| Aardvark | [Wikipedia](https://en.wikipedia.org/wiki/Aardvark) | [File page](https://en.wikipedia.org/wiki/File:Orycteropus_afer_175359469.jpg) |
+| African bush elephant | [Wikipedia](https://en.wikipedia.org/wiki/African_bush_elephant) | [File page](https://en.wikipedia.org/wiki/File:178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg) |
+| Alpaca | [Wikipedia](https://en.wikipedia.org/wiki/Alpaca) | [File page](https://en.wikipedia.org/wiki/File:Alpaca_in_Higashiyama_Zoo_-_1.jpg) |
+| American alligator | [Wikipedia](https://en.wikipedia.org/wiki/American_alligator) | [File page](https://en.wikipedia.org/wiki/File:American_Alligator.jpg) |
+| American bison | [Wikipedia](https://en.wikipedia.org/wiki/American_bison) | [File page](https://en.wikipedia.org/wiki/File:American_bison_k5680-1.jpg) |
+| American black bear | [Wikipedia](https://en.wikipedia.org/wiki/American_black_bear) | [File page](https://en.wikipedia.org/wiki/File:01_Schwarzb%C3%A4r.jpg) |
+| American bullfrog | [Wikipedia](https://en.wikipedia.org/wiki/American_bullfrog) | [File page](https://en.wikipedia.org/wiki/File:North-American-bullfrog1.jpg) |
+| American flamingo | [Wikipedia](https://en.wikipedia.org/wiki/American_flamingo) | [File page](https://en.wikipedia.org/wiki/File:American_Flamingo_JG.jpg) |
+| American lobster | [Wikipedia](https://en.wikipedia.org/wiki/American_lobster) | [File page](https://en.wikipedia.org/wiki/File:Nur01521_-_Flickr_-_NOAA_Photo_Library.jpg) |
+| American robin | [Wikipedia](https://en.wikipedia.org/wiki/American_robin) | [File page](https://en.wikipedia.org/wiki/File:American_robin_%2871307%29.jpg) |
+| Ant | [Wikipedia](https://en.wikipedia.org/wiki/Ant) | [File page](https://en.wikipedia.org/wiki/File:Red_Ant_-_March_2025.jpg) |
+| Arctic fox | [Wikipedia](https://en.wikipedia.org/wiki/Arctic_fox) | [File page](https://en.wikipedia.org/wiki/File:Vulpes_lagopus_in_Iceland_%28cropped_3%29.jpg) |
+| Asian elephant | [Wikipedia](https://en.wikipedia.org/wiki/Asian_elephant) | [File page](https://en.wikipedia.org/wiki/File:Elephas_maximus_%28Bandipur%29.jpg) |
+| Atlantic puffin | [Wikipedia](https://en.wikipedia.org/wiki/Atlantic_puffin) | [File page](https://en.wikipedia.org/wiki/File:Puffin_%28Fratercula_arctica%29.jpg) |
+| Atlantic salmon | [Wikipedia](https://en.wikipedia.org/wiki/Atlantic_salmon) | [File page](https://en.wikipedia.org/wiki/File:Wst_atlantischer_lachs_stoer_001.jpg) |
+| Axolotl | [Wikipedia](https://en.wikipedia.org/wiki/Axolotl) | [File page](https://en.wikipedia.org/wiki/File:Axolotl_ganz.jpg) |
+| Bald eagle | [Wikipedia](https://en.wikipedia.org/wiki/Bald_eagle) | [File page](https://en.wikipedia.org/wiki/File:Bald_eagle_about_to_fly_in_Alaska_%282016%29.jpg) |
+| Ball python | [Wikipedia](https://en.wikipedia.org/wiki/Ball_python) | [File page](https://en.wikipedia.org/wiki/File:Ball_python_lucy.JPG) |
+| Barn owl | [Wikipedia](https://en.wikipedia.org/wiki/Barn_owl) | [File page](https://en.wikipedia.org/wiki/File:American_Barn_Owl_%28Tyto_furcata_guatemalae%29%2C_Orange_Walk.jpg) |
+| Black rhinoceros | [Wikipedia](https://en.wikipedia.org/wiki/Black_rhinoceros) | [File page](https://en.wikipedia.org/wiki/File:Black_Rhino_at_Working_with_Wildlife.jpg) |
+| Blue jay | [Wikipedia](https://en.wikipedia.org/wiki/Blue_jay) | [File page](https://en.wikipedia.org/wiki/File:Blue_jay_in_PP_%2830960%29.jpg) |
+| Bobcat | [Wikipedia](https://en.wikipedia.org/wiki/Bobcat) | [File page](https://en.wikipedia.org/wiki/File:Bobcat_at_Columbus_Zoo_Boo.jpg) |
+| Bombyx mori | [Wikipedia](https://en.wikipedia.org/wiki/Bombyx_mori) | [File page](https://en.wikipedia.org/wiki/File:Pairedmoths.jpg) |
+| Bornean orangutan | [Wikipedia](https://en.wikipedia.org/wiki/Bornean_orangutan) | [File page](https://en.wikipedia.org/wiki/File:Tanjung_Puting30477.jpg) |
+| Brown bear | [Wikipedia](https://en.wikipedia.org/wiki/Brown_bear) | [File page](https://en.wikipedia.org/wiki/File:2010-kodiak-bear-1.jpg) |
+| Brown pelican | [Wikipedia](https://en.wikipedia.org/wiki/Brown_pelican) | [File page](https://en.wikipedia.org/wiki/File:Brown_pelican_in_flight_%28Bodega_Bay%29.jpg) |
+| Brown rat | [Wikipedia](https://en.wikipedia.org/wiki/Brown_rat) | [File page](https://en.wikipedia.org/wiki/File:Brown_Rat_%28Rattus_norvegicus%29.jpg) |
+| Brown-throated sloth | [Wikipedia](https://en.wikipedia.org/wiki/Brown-throated_sloth) | [File page](https://en.wikipedia.org/wiki/File:Bradypus.jpg) |
+| Budgerigar | [Wikipedia](https://en.wikipedia.org/wiki/Budgerigar) | [File page](https://en.wikipedia.org/wiki/File:Budgerigar-male-strzelecki-qld.jpg) |
+| Canada goose | [Wikipedia](https://en.wikipedia.org/wiki/Canada_goose) | [File page](https://en.wikipedia.org/wiki/File:Canada_goose_on_Seedskadee_NWR_%2827826185489%29.jpg) |
+| Cane toad | [Wikipedia](https://en.wikipedia.org/wiki/Cane_toad) | [File page](https://en.wikipedia.org/wiki/File:Canetoadmale.jpg) |
+| Capybara | [Wikipedia](https://en.wikipedia.org/wiki/Capybara) | [File page](https://en.wikipedia.org/wiki/File:Capybaracropped.jpg) |
+| Cat | [Wikipedia](https://en.wikipedia.org/wiki/Cat) | [File page](https://en.wikipedia.org/wiki/File:Siam_lilacpoint.jpg) |
+| Cattle | [Wikipedia](https://en.wikipedia.org/wiki/Cattle) | [File page](https://en.wikipedia.org/wiki/File:Cow_%28Fleckvieh_breed%29_Oeschinensee_Slaunger_2009-07-07.jpg) |
+| Cheetah | [Wikipedia](https://en.wikipedia.org/wiki/Cheetah) | [File page](https://en.wikipedia.org/wiki/File:Male_cheetah_facing_left_in_South_Africa.jpg) |
+| Chicken | [Wikipedia](https://en.wikipedia.org/wiki/Chicken) | [File page](https://en.wikipedia.org/wiki/File:Male_and_female_chicken_sitting_together.jpg) |
+| Chimpanzee | [Wikipedia](https://en.wikipedia.org/wiki/Chimpanzee) | [File page](https://en.wikipedia.org/wiki/File:015_Chimpanzee_at_Kibale_forest_National_Park_Photo_by_Giles_Laurent.jpg) |
+| Chinchilla | [Wikipedia](https://en.wikipedia.org/wiki/Chinchilla) | [File page](https://en.wikipedia.org/wiki/File:Chinchilla_lanigera_%28Wroclaw_zoo%29-2.JPG) |
+| Coccinella septempunctata | [Wikipedia](https://en.wikipedia.org/wiki/Coccinella_septempunctata) | [File page](https://en.wikipedia.org/wiki/File:7-Spotted-Ladybug-Coccinella-septempunctata-sq1.jpg) |
+| Coconut crab | [Wikipedia](https://en.wikipedia.org/wiki/Coconut_crab) | [File page](https://en.wikipedia.org/wiki/File:Coconut_Crab_Birgus_latro.jpg) |
+| Common chameleon | [Wikipedia](https://en.wikipedia.org/wiki/Common_chameleon) | [File page](https://en.wikipedia.org/wiki/File:Mediterranean_chameleon_%28Chamaeleo_chamaeleon_recticrista%29.jpg) |
+| Common frog | [Wikipedia](https://en.wikipedia.org/wiki/Common_frog) | [File page](https://en.wikipedia.org/wiki/File:European_Common_Frog_Rana_temporaria.jpg) |
+| Common octopus | [Wikipedia](https://en.wikipedia.org/wiki/Common_octopus) | [File page](https://en.wikipedia.org/wiki/File:Octopus2.jpg) |
+| Common ostrich | [Wikipedia](https://en.wikipedia.org/wiki/Common_ostrich) | [File page](https://en.wikipedia.org/wiki/File:Struthio_camelus_-_Etosha_2014_%283%29.jpg) |
+| Common raven | [Wikipedia](https://en.wikipedia.org/wiki/Common_raven) | [File page](https://en.wikipedia.org/wiki/File:Corvus_corax_clarionensis%2C_Point_Reyes_National_Seashore.jpg) |
+| Common vampire bat | [Wikipedia](https://en.wikipedia.org/wiki/Common_vampire_bat) | [File page](https://en.wikipedia.org/wiki/File:Desmo-Flug-01.jpg) |
+| Common wombat | [Wikipedia](https://en.wikipedia.org/wiki/Common_wombat) | [File page](https://en.wikipedia.org/wiki/File:Vombatus_ursinus_-Maria_Island_National_Park.jpg) |
+| Cornu aspersum | [Wikipedia](https://en.wikipedia.org/wiki/Cornu_aspersum) | [File page](https://en.wikipedia.org/wiki/File:Snail1web.jpg) |
+| Cougar | [Wikipedia](https://en.wikipedia.org/wiki/Cougar) | [File page](https://en.wikipedia.org/wiki/File:Mountain_Lion_in_Glacier_National_Park.jpg) |
+| Coyote | [Wikipedia](https://en.wikipedia.org/wiki/Coyote) | [File page](https://en.wikipedia.org/wiki/File:2009-Coyote-Yosemite.jpg) |
+| Desert locust | [Wikipedia](https://en.wikipedia.org/wiki/Desert_locust) | [File page](https://en.wikipedia.org/wiki/File:SGR_laying.jpg) |
+| Dog | [Wikipedia](https://en.wikipedia.org/wiki/Dog) | [File page](https://en.wikipedia.org/wiki/File:Huskiesatrest.jpg) |
+| Donkey | [Wikipedia](https://en.wikipedia.org/wiki/Donkey) | [File page](https://en.wikipedia.org/wiki/File:Donkey_in_Clovelly%2C_North_Devon%2C_England.jpg) |
+| Dromedary | [Wikipedia](https://en.wikipedia.org/wiki/Dromedary) | [File page](https://en.wikipedia.org/wiki/File:Camelus_dromedarius_in_Nuweiba.jpg) |
+| Eastern chipmunk | [Wikipedia](https://en.wikipedia.org/wiki/Eastern_chipmunk) | [File page](https://en.wikipedia.org/wiki/File:Chipmunk_with_stuffed_cheeks_in_Prospect_Park_%2805980%29.jpg) |
+| Eastern gray squirrel | [Wikipedia](https://en.wikipedia.org/wiki/Eastern_gray_squirrel) | [File page](https://en.wikipedia.org/wiki/File:EasternGraySquirrel_GAm.jpg) |
+| Emperor penguin | [Wikipedia](https://en.wikipedia.org/wiki/Emperor_penguin) | [File page](https://en.wikipedia.org/wiki/File:Aptenodytes_forsteri_-Snow_Hill_Island%2C_Antarctica_-adults_and_juvenile-8.jpg) |
+| Emperor scorpion | [Wikipedia](https://en.wikipedia.org/wiki/Emperor_scorpion) | [File page](https://en.wikipedia.org/wiki/File:Female_Emperor_Scorpion.jpg) |
+| Emu | [Wikipedia](https://en.wikipedia.org/wiki/Emu) | [File page](https://en.wikipedia.org/wiki/File:Emu_1_-_Tidbinbilla.jpg) |
+| Eurasian lynx | [Wikipedia](https://en.wikipedia.org/wiki/Eurasian_lynx) | [File page](https://en.wikipedia.org/wiki/File:Lynx_Nationalpark_Bayerischer_Wald_01.jpg) |
+| Eurasian otter | [Wikipedia](https://en.wikipedia.org/wiki/Eurasian_otter) | [File page](https://en.wikipedia.org/wiki/File:Fischotter%2C_Lutra_Lutra.JPG) |
+| European badger | [Wikipedia](https://en.wikipedia.org/wiki/European_badger) | [File page](https://en.wikipedia.org/wiki/File:European_badger_%28Meles_meles_taxus%29_Drenthe.jpg) |
+| European hare | [Wikipedia](https://en.wikipedia.org/wiki/European_hare) | [File page](https://en.wikipedia.org/wiki/File:European_hare_%28_Lepus_europaeus%29.jpg) |
+| European mole | [Wikipedia](https://en.wikipedia.org/wiki/European_mole) | [File page](https://en.wikipedia.org/wiki/File:Talpa_europaea_I.jpg) |
+| European rabbit | [Wikipedia](https://en.wikipedia.org/wiki/European_rabbit) | [File page](https://en.wikipedia.org/wiki/File:Oryctolagus_cuniculus_-_euqirneto_-_419737670_%28cropped%29.jpeg) |
+| European robin | [Wikipedia](https://en.wikipedia.org/wiki/European_robin) | [File page](https://en.wikipedia.org/wiki/File:Erithacus_rubecula_with_cocked_head.jpg) |
+| Fennec fox | [Wikipedia](https://en.wikipedia.org/wiki/Fennec_fox) | [File page](https://en.wikipedia.org/wiki/File:Fennec_Fox_Vulpes_zerda.jpg) |
+| Ferret | [Wikipedia](https://en.wikipedia.org/wiki/Ferret) | [File page](https://en.wikipedia.org/wiki/File:Ferret_2008.png) |
+| Galápagos tortoise | [Wikipedia](https://en.wikipedia.org/wiki/Gal%C3%A1pagos_tortoise) | [File page](https://en.wikipedia.org/wiki/File:Galapagos_giant_tortoise_Geochelone_elephantopus.jpg) |
+| Giant anteater | [Wikipedia](https://en.wikipedia.org/wiki/Giant_anteater) | [File page](https://en.wikipedia.org/wiki/File:Myresluger2.jpg) |
+| Giant panda | [Wikipedia](https://en.wikipedia.org/wiki/Giant_panda) | [File page](https://en.wikipedia.org/wiki/File:Grosser_Panda.JPG) |
+| Giraffe | [Wikipedia](https://en.wikipedia.org/wiki/Giraffe) | [File page](https://en.wikipedia.org/wiki/File:Giraffe_Mikumi_National_Park.jpg) |
+| Goat | [Wikipedia](https://en.wikipedia.org/wiki/Goat) | [File page](https://en.wikipedia.org/wiki/File:Hausziege_04.jpg) |
+| Golden eagle | [Wikipedia](https://en.wikipedia.org/wiki/Golden_eagle) | [File page](https://en.wikipedia.org/wiki/File:015_Wild_Golden_Eagle_in_flight_at_Pfyn-Finges_%28Switzerland%29_Photo_by_Giles_Laurent.jpg) |
+| Golden hamster | [Wikipedia](https://en.wikipedia.org/wiki/Golden_hamster) | [File page](https://en.wikipedia.org/wiki/File:Golden_hamster_front_1.jpg) |
+| Goldfish | [Wikipedia](https://en.wikipedia.org/wiki/Goldfish) | [File page](https://en.wikipedia.org/wiki/File:Gold_fish1.jpg) |
+| Goliath birdeater | [Wikipedia](https://en.wikipedia.org/wiki/Goliath_birdeater) | [File page](https://en.wikipedia.org/wiki/File:Theraphosa_blondi_MHNT.jpg) |
+| Goliathus | [Wikipedia](https://en.wikipedia.org/wiki/Goliathus) | [File page](https://en.wikipedia.org/wiki/File:Goliath_beetle.jpg) |
+| Great blue heron | [Wikipedia](https://en.wikipedia.org/wiki/Great_blue_heron) | [File page](https://en.wikipedia.org/wiki/File:GreatBlueHeronInARiver.jpg) |
+| Great white shark | [Wikipedia](https://en.wikipedia.org/wiki/Great_white_shark) | [File page](https://en.wikipedia.org/wiki/File:White_shark.jpg) |
+| Green iguana | [Wikipedia](https://en.wikipedia.org/wiki/Green_iguana) | [File page](https://en.wikipedia.org/wiki/File:Iguana_iguana_%28male_resting%29.jpg) |
+| Green sea turtle | [Wikipedia](https://en.wikipedia.org/wiki/Green_sea_turtle) | [File page](https://en.wikipedia.org/wiki/File:Green_sea_turtle_%28Chelonia_mydas%29_Moorea.jpg) |
+| Groundhog | [Wikipedia](https://en.wikipedia.org/wiki/Groundhog) | [File page](https://en.wikipedia.org/wiki/File:Marmota_monax_UL_04.jpg) |
+| Guinea pig | [Wikipedia](https://en.wikipedia.org/wiki/Guinea_pig) | [File page](https://en.wikipedia.org/wiki/File:George_the_amazing_guinea_pig.jpg) |
+| Hedgehog | [Wikipedia](https://en.wikipedia.org/wiki/Hedgehog) | [File page](https://en.wikipedia.org/wiki/File:Igel.JPG) |
+| Hippopotamus | [Wikipedia](https://en.wikipedia.org/wiki/Hippopotamus) | [File page](https://en.wikipedia.org/wiki/File:Portrait_Hippopotamus_in_the_water.jpg) |
+| Honey badger | [Wikipedia](https://en.wikipedia.org/wiki/Honey_badger) | [File page](https://en.wikipedia.org/wiki/File:Honey_Badger.jpg) |
+| Horse | [Wikipedia](https://en.wikipedia.org/wiki/Horse) | [File page](https://en.wikipedia.org/wiki/File:Nokota_Horses_cropped.jpg) |
 | House centipede | [Wikipedia](https://en.wikipedia.org/wiki/House_centipede) | — |
 | House mouse | [Wikipedia](https://en.wikipedia.org/wiki/House_mouse) | [File page](https://en.wikipedia.org/wiki/File:Mouse_white_background.jpg) |
-| House sparrow | [Wikipedia](https://en.wikipedia.org/wiki/House_sparrow) | — |
-| Housefly | [Wikipedia](https://en.wikipedia.org/wiki/Housefly) | — |
-| Human | [Wikipedia](https://en.wikipedia.org/wiki/Human) | — |
-| Jaguar | [Wikipedia](https://en.wikipedia.org/wiki/Jaguar) | — |
-| King cobra | [Wikipedia](https://en.wikipedia.org/wiki/King_cobra) | — |
-| Koala | [Wikipedia](https://en.wikipedia.org/wiki/Koala) | — |
-| Komodo dragon | [Wikipedia](https://en.wikipedia.org/wiki/Komodo_dragon) | — |
-| Least weasel | [Wikipedia](https://en.wikipedia.org/wiki/Least_weasel) | — |
-| Leopard | [Wikipedia](https://en.wikipedia.org/wiki/Leopard) | — |
-| Leopard gecko | [Wikipedia](https://en.wikipedia.org/wiki/Leopard_gecko) | — |
-| Lion | [Wikipedia](https://en.wikipedia.org/wiki/Lion) | — |
-| Little brown bat | [Wikipedia](https://en.wikipedia.org/wiki/Little_brown_bat) | — |
-| Llama | [Wikipedia](https://en.wikipedia.org/wiki/Llama) | — |
-| Lumbricus terrestris | [Wikipedia](https://en.wikipedia.org/wiki/Lumbricus_terrestris) | — |
-| Mallard | [Wikipedia](https://en.wikipedia.org/wiki/Mallard) | — |
-| Meerkat | [Wikipedia](https://en.wikipedia.org/wiki/Meerkat) | — |
-| Monarch butterfly | [Wikipedia](https://en.wikipedia.org/wiki/Monarch_butterfly) | — |
-| Moose | [Wikipedia](https://en.wikipedia.org/wiki/Moose) | — |
-| Mute swan | [Wikipedia](https://en.wikipedia.org/wiki/Mute_swan) | — |
-| Naked mole-rat | [Wikipedia](https://en.wikipedia.org/wiki/Naked_mole-rat) | — |
-| Nine-banded armadillo | [Wikipedia](https://en.wikipedia.org/wiki/Nine-banded_armadillo) | — |
-| North American beaver | [Wikipedia](https://en.wikipedia.org/wiki/North_American_beaver) | — |
-| North American porcupine | [Wikipedia](https://en.wikipedia.org/wiki/North_American_porcupine) | — |
-| Northern cardinal | [Wikipedia](https://en.wikipedia.org/wiki/Northern_cardinal) | — |
-| Okapi | [Wikipedia](https://en.wikipedia.org/wiki/Okapi) | — |
-| Peregrine falcon | [Wikipedia](https://en.wikipedia.org/wiki/Peregrine_falcon) | — |
-| Pig | [Wikipedia](https://en.wikipedia.org/wiki/Pig) | — |
-| Plains zebra | [Wikipedia](https://en.wikipedia.org/wiki/Plains_zebra) | — |
-| Platypus | [Wikipedia](https://en.wikipedia.org/wiki/Platypus) | — |
-| Polar bear | [Wikipedia](https://en.wikipedia.org/wiki/Polar_bear) | — |
-| Raccoon | [Wikipedia](https://en.wikipedia.org/wiki/Raccoon) | — |
-| Red deer | [Wikipedia](https://en.wikipedia.org/wiki/Red_deer) | — |
-| Red fox | [Wikipedia](https://en.wikipedia.org/wiki/Red_fox) | — |
-| Red kangaroo | [Wikipedia](https://en.wikipedia.org/wiki/Red_kangaroo) | — |
-| Red panda | [Wikipedia](https://en.wikipedia.org/wiki/Red_panda) | — |
-| Red squirrel | [Wikipedia](https://en.wikipedia.org/wiki/Red_squirrel) | — |
-| Reindeer | [Wikipedia](https://en.wikipedia.org/wiki/Reindeer) | — |
-| Ring-tailed lemur | [Wikipedia](https://en.wikipedia.org/wiki/Ring-tailed_lemur) | — |
-| Rock dove | [Wikipedia](https://en.wikipedia.org/wiki/Rock_dove) | — |
-| Ruby-throated hummingbird | [Wikipedia](https://en.wikipedia.org/wiki/Ruby-throated_hummingbird) | — |
-| Saltwater crocodile | [Wikipedia](https://en.wikipedia.org/wiki/Saltwater_crocodile) | — |
-| Scarlet macaw | [Wikipedia](https://en.wikipedia.org/wiki/Scarlet_macaw) | — |
-| Sea otter | [Wikipedia](https://en.wikipedia.org/wiki/Sea_otter) | — |
-| Sheep | [Wikipedia](https://en.wikipedia.org/wiki/Sheep) | — |
-| Snow leopard | [Wikipedia](https://en.wikipedia.org/wiki/Snow_leopard) | — |
-| Snowy owl | [Wikipedia](https://en.wikipedia.org/wiki/Snowy_owl) | — |
-| Spotted hyena | [Wikipedia](https://en.wikipedia.org/wiki/Spotted_hyena) | — |
-| Stag beetle | [Wikipedia](https://en.wikipedia.org/wiki/Stag_beetle) | — |
-| Striped skunk | [Wikipedia](https://en.wikipedia.org/wiki/Striped_skunk) | — |
-| Tasmanian devil | [Wikipedia](https://en.wikipedia.org/wiki/Tasmanian_devil) | — |
-| Tiger | [Wikipedia](https://en.wikipedia.org/wiki/Tiger) | — |
-| Toco toucan | [Wikipedia](https://en.wikipedia.org/wiki/Toco_toucan) | — |
-| Virginia opossum | [Wikipedia](https://en.wikipedia.org/wiki/Virginia_opossum) | — |
-| Western gorilla | [Wikipedia](https://en.wikipedia.org/wiki/Western_gorilla) | — |
-| Western honey bee | [Wikipedia](https://en.wikipedia.org/wiki/Western_honey_bee) | — |
-| White rhinoceros | [Wikipedia](https://en.wikipedia.org/wiki/White_rhinoceros) | — |
-| White-tailed deer | [Wikipedia](https://en.wikipedia.org/wiki/White-tailed_deer) | — |
-| Wild boar | [Wikipedia](https://en.wikipedia.org/wiki/Wild_boar) | — |
-| Wild turkey | [Wikipedia](https://en.wikipedia.org/wiki/Wild_turkey) | — |
-| Wolf | [Wikipedia](https://en.wikipedia.org/wiki/Wolf) | — |
+| House sparrow | [Wikipedia](https://en.wikipedia.org/wiki/House_sparrow) | [File page](https://en.wikipedia.org/wiki/File:House_sparrow_male_in_Prospect_Park_%2853532%29.jpg) |
+| Housefly | [Wikipedia](https://en.wikipedia.org/wiki/Housefly) | [File page](https://en.wikipedia.org/wiki/File:Common_house_fly%2C_Musca_domestica.jpg) |
+| Human | [Wikipedia](https://en.wikipedia.org/wiki/Human) | [File page](https://en.wikipedia.org/wiki/File:Akha_cropped_hires.JPG) |
+| Jaguar | [Wikipedia](https://en.wikipedia.org/wiki/Jaguar) | [File page](https://en.wikipedia.org/wiki/File:Standing_jaguar.jpg) |
+| King cobra | [Wikipedia](https://en.wikipedia.org/wiki/King_cobra) | [File page](https://en.wikipedia.org/wiki/File:12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg) |
+| Koala | [Wikipedia](https://en.wikipedia.org/wiki/Koala) | [File page](https://en.wikipedia.org/wiki/File:Koala_climbing_tree.jpg) |
+| Komodo dragon | [Wikipedia](https://en.wikipedia.org/wiki/Komodo_dragon) | [File page](https://en.wikipedia.org/wiki/File:202306_Varanus_komodoensis.jpg) |
+| Least weasel | [Wikipedia](https://en.wikipedia.org/wiki/Least_weasel) | [File page](https://en.wikipedia.org/wiki/File:Mustela_nivalis_-British_Wildlife_Centre-4.jpg) |
+| Leopard | [Wikipedia](https://en.wikipedia.org/wiki/Leopard) | [File page](https://en.wikipedia.org/wiki/File:African_leopard_male_%28cropped%29.jpg) |
+| Leopard gecko | [Wikipedia](https://en.wikipedia.org/wiki/Leopard_gecko) | [File page](https://en.wikipedia.org/wiki/File:Eublepharis_macularius_2009_G6.jpg) |
+| Lion | [Wikipedia](https://en.wikipedia.org/wiki/Lion) | [File page](https://en.wikipedia.org/wiki/File:020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg) |
+| Little brown bat | [Wikipedia](https://en.wikipedia.org/wiki/Little_brown_bat) | [File page](https://en.wikipedia.org/wiki/File:Little_Brown_Myotis_%28cropped%29.JPG) |
+| Llama | [Wikipedia](https://en.wikipedia.org/wiki/Llama) | [File page](https://en.wikipedia.org/wiki/File:Llamas%2C_Vernagt-Stausee%2C_Italy.jpg) |
+| Lumbricus terrestris | [Wikipedia](https://en.wikipedia.org/wiki/Lumbricus_terrestris) | [File page](https://en.wikipedia.org/wiki/File:Regenwurm1.jpg) |
+| Mallard | [Wikipedia](https://en.wikipedia.org/wiki/Mallard) | [File page](https://en.wikipedia.org/wiki/File:Anas_platyrhynchos_male_female_quadrat.jpg) |
+| Meerkat | [Wikipedia](https://en.wikipedia.org/wiki/Meerkat) | [File page](https://en.wikipedia.org/wiki/File:Meerkat_%28Suricata_suricatta%29_Tswalu.jpg) |
+| Monarch butterfly | [Wikipedia](https://en.wikipedia.org/wiki/Monarch_butterfly) | [File page](https://en.wikipedia.org/wiki/File:Monarch_Butterfly_Danaus_plexippus_Male_2664px.jpg) |
+| Moose | [Wikipedia](https://en.wikipedia.org/wiki/Moose) | [File page](https://en.wikipedia.org/wiki/File:Alaska_moose.jpg) |
+| Mute swan | [Wikipedia](https://en.wikipedia.org/wiki/Mute_swan) | [File page](https://en.wikipedia.org/wiki/File:CygneVaires.jpg) |
+| Naked mole-rat | [Wikipedia](https://en.wikipedia.org/wiki/Naked_mole-rat) | [File page](https://en.wikipedia.org/wiki/File:Webs180130-rat.jpg) |
+| Nine-banded armadillo | [Wikipedia](https://en.wikipedia.org/wiki/Nine-banded_armadillo) | [File page](https://en.wikipedia.org/wiki/File:Dasypus_novemcinctus_en_Zool%C3%B3gico_de_Paraguan%C3%A1.jpg) |
+| North American beaver | [Wikipedia](https://en.wikipedia.org/wiki/North_American_beaver) | [File page](https://en.wikipedia.org/wiki/File:American_Beaver.jpg) |
+| North American porcupine | [Wikipedia](https://en.wikipedia.org/wiki/North_American_porcupine) | [File page](https://en.wikipedia.org/wiki/File:North_American_porcupine_%28Erethizon_dorsatum_nigrescens%29_Yoho.jpg) |
+| Northern cardinal | [Wikipedia](https://en.wikipedia.org/wiki/Northern_cardinal) | [File page](https://en.wikipedia.org/wiki/File:Male_northern_cardinal_in_Central_Park_%2852612%29.jpg) |
+| Okapi | [Wikipedia](https://en.wikipedia.org/wiki/Okapi) | [File page](https://en.wikipedia.org/wiki/File:Saint-Aignan_%28Loir-et-Cher%29._Okapi.jpg) |
+| Peregrine falcon | [Wikipedia](https://en.wikipedia.org/wiki/Peregrine_falcon) | [File page](https://en.wikipedia.org/wiki/File:Falco_peregrinus_m_Humber_Bay_Park_Toronto.jpg) |
+| Pig | [Wikipedia](https://en.wikipedia.org/wiki/Pig) | [File page](https://en.wikipedia.org/wiki/File:Pig_farm_Vampula_1.jpg) |
+| Plains zebra | [Wikipedia](https://en.wikipedia.org/wiki/Plains_zebra) | [File page](https://en.wikipedia.org/wiki/File:Equus_quagga_burchellii_-_Etosha%2C_2014.jpg) |
+| Platypus | [Wikipedia](https://en.wikipedia.org/wiki/Platypus) | [File page](https://en.wikipedia.org/wiki/File:Duck-billed_platypus_%28Ornithorhynchus_anatinus%29_Scottsdale.jpg) |
+| Polar bear | [Wikipedia](https://en.wikipedia.org/wiki/Polar_bear) | [File page](https://en.wikipedia.org/wiki/File:Polar_Bear_-_Alaska_%28cropped%29.jpg) |
+| Raccoon | [Wikipedia](https://en.wikipedia.org/wiki/Raccoon) | [File page](https://en.wikipedia.org/wiki/File:Raccoon_in_Central_Park_%2835264%29.jpg) |
+| Red deer | [Wikipedia](https://en.wikipedia.org/wiki/Red_deer) | [File page](https://en.wikipedia.org/wiki/File:Cervus_elaphus_Luc_Viatour_6.jpg) |
+| Red fox | [Wikipedia](https://en.wikipedia.org/wiki/Red_fox) | [File page](https://en.wikipedia.org/wiki/File:Portrait_of_a_red_fox_in_Rautas_fj%C3%A4llurskog_%28cropped%29.jpg) |
+| Red kangaroo | [Wikipedia](https://en.wikipedia.org/wiki/Red_kangaroo) | [File page](https://en.wikipedia.org/wiki/File:Red_kangaroo_-_melbourne_zoo.jpg) |
+| Red panda | [Wikipedia](https://en.wikipedia.org/wiki/Red_panda) | [File page](https://en.wikipedia.org/wiki/File:Red_Panda_%2824986761703%29.jpg) |
+| Red squirrel | [Wikipedia](https://en.wikipedia.org/wiki/Red_squirrel) | [File page](https://en.wikipedia.org/wiki/File:Squirrel_posing.jpg) |
+| Reindeer | [Wikipedia](https://en.wikipedia.org/wiki/Reindeer) | [File page](https://en.wikipedia.org/wiki/File:Reinbukken_p%C3%A5_frisk_gr%C3%B8nt_beite._-_panoramio.jpg) |
+| Ring-tailed lemur | [Wikipedia](https://en.wikipedia.org/wiki/Ring-tailed_lemur) | [File page](https://en.wikipedia.org/wiki/File:Ring-tailed_lemur_%28Lemur_catta%29.jpg) |
+| Rock dove | [Wikipedia](https://en.wikipedia.org/wiki/Rock_dove) | [File page](https://en.wikipedia.org/wiki/File:Columba_livia_%28Rock_Dove%2C_wild%29%2C_Duncansby_Head%2C_Caithness%2C_Scotland_1.jpg) |
+| Ruby-throated hummingbird | [Wikipedia](https://en.wikipedia.org/wiki/Ruby-throated_hummingbird) | [File page](https://en.wikipedia.org/wiki/File:Archilochus_colubris_-flying_-male-8.jpg) |
+| Saltwater crocodile | [Wikipedia](https://en.wikipedia.org/wiki/Saltwater_crocodile) | [File page](https://en.wikipedia.org/wiki/File:SaltwaterCrocodile%28%27Maximo%27%29.jpg) |
+| Scarlet macaw | [Wikipedia](https://en.wikipedia.org/wiki/Scarlet_macaw) | [File page](https://en.wikipedia.org/wiki/File:Scarlet_macaw_%28Ara_macao_cyanopterus%29_Copan.jpg) |
+| Sea otter | [Wikipedia](https://en.wikipedia.org/wiki/Sea_otter) | [File page](https://en.wikipedia.org/wiki/File:Sea_Otter_%28Enhydra_lutris%29_%2825169790524%29_crop.jpg) |
+| Sheep | [Wikipedia](https://en.wikipedia.org/wiki/Sheep) | [File page](https://en.wikipedia.org/wiki/File:Flock_of_sheep.jpg) |
+| Snow leopard | [Wikipedia](https://en.wikipedia.org/wiki/Snow_leopard) | [File page](https://en.wikipedia.org/wiki/File:Irbis4.JPG) |
+| Snowy owl | [Wikipedia](https://en.wikipedia.org/wiki/Snowy_owl) | [File page](https://en.wikipedia.org/wiki/File:SnowyOwlAmericanBlackDuck.jpg) |
+| Spotted hyena | [Wikipedia](https://en.wikipedia.org/wiki/Spotted_hyena) | [File page](https://en.wikipedia.org/wiki/File:Spotted_hyena_%28Crocuta_crocuta%29.jpg) |
+| Stag beetle | [Wikipedia](https://en.wikipedia.org/wiki/Stag_beetle) | [File page](https://en.wikipedia.org/wiki/File:Golden_stag_beetle.jpg) |
+| Striped skunk | [Wikipedia](https://en.wikipedia.org/wiki/Striped_skunk) | [File page](https://en.wikipedia.org/wiki/File:Skunk_about_to_spray.jpg) |
+| Tasmanian devil | [Wikipedia](https://en.wikipedia.org/wiki/Tasmanian_devil) | [File page](https://en.wikipedia.org/wiki/File:Sarcophilus_harrisii_taranna.jpg) |
+| Tiger | [Wikipedia](https://en.wikipedia.org/wiki/Tiger) | [File page](https://en.wikipedia.org/wiki/File:Bengal_tiger_%28Panthera_tigris_tigris%29_female_3_crop.jpg) |
+| Toco toucan | [Wikipedia](https://en.wikipedia.org/wiki/Toco_toucan) | [File page](https://en.wikipedia.org/wiki/File:006_Toco_toucan_in_Encontro_das_%C3%81guas_State_Park_Photo_by_Giles_Laurent_%28cropped%29.jpg) |
+| Virginia opossum | [Wikipedia](https://en.wikipedia.org/wiki/Virginia_opossum) | [File page](https://en.wikipedia.org/wiki/File:Opossum_2.jpg) |
+| Western gorilla | [Wikipedia](https://en.wikipedia.org/wiki/Western_gorilla) | [File page](https://en.wikipedia.org/wiki/File:Male_gorilla_in_SF_zoo.jpg) |
+| Western honey bee | [Wikipedia](https://en.wikipedia.org/wiki/Western_honey_bee) | [File page](https://en.wikipedia.org/wiki/File:Apis_mellifera_Western_honey_bee.jpg) |
+| White rhinoceros | [Wikipedia](https://en.wikipedia.org/wiki/White_rhinoceros) | [File page](https://en.wikipedia.org/wiki/File:109_Male_White_rhinoceros_walking_in_the_Kalahari_Desert_of_Namibia_Photo_by_Giles_Laurent.jpg) |
+| White-tailed deer | [Wikipedia](https://en.wikipedia.org/wiki/White-tailed_deer) | [File page](https://en.wikipedia.org/wiki/File:White-tailed_deer.jpg) |
+| Wild boar | [Wikipedia](https://en.wikipedia.org/wiki/Wild_boar) | [File page](https://en.wikipedia.org/wiki/File:Wildschwein%2C_N%C3%A4he_Pulverstampftor_%28cropped%29.jpg) |
+| Wild turkey | [Wikipedia](https://en.wikipedia.org/wiki/Wild_turkey) | [File page](https://en.wikipedia.org/wiki/File:20260428_tom_wild_turkey_matthaei_botanical_gardens_PD08952.jpg) |
+| Wolf | [Wikipedia](https://en.wikipedia.org/wiki/Wolf) | [File page](https://en.wikipedia.org/wiki/File:Eurasian_wolf_2.jpg) |

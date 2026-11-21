@@ -53,11 +53,16 @@ class ClassifyTests(unittest.TestCase):
 @unittest.skipUnless(HAS_GIT, "git not installed")
 class PublishFlowTests(unittest.TestCase):
     def setUp(self):
-        self.tmp = tempfile.TemporaryDirectory()
+        self.tmp = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)  # Git marks objects read-only on Windows
         base = Path(self.tmp.name)
         # Isolated copy of the project, with things that must NOT be uploaded.
         self.proj = base / "proj"
-        shutil.copytree(ROOT, self.proj, ignore=shutil.ignore_patterns(".git", "__pycache__", ".venv"))
+        shutil.copytree(ROOT, self.proj, ignore=shutil.ignore_patterns(
+            ".git", "__pycache__", ".venv", "build", "dist", "sources"))
+        # Isolate from the developer's real data: an empty cache means publish never offers to
+        # re-download anything, so these tests never touch the network and don't depend on it.
+        (self.proj / "data" / "animals.json").write_text("{}")
+        (self.proj / "data" / "ATTRIBUTION.md").unlink(missing_ok=True)
         (self.proj / ".venv").mkdir()
         (self.proj / ".venv" / "python.exe").write_text("x")
         (self.proj / "keys").mkdir()
@@ -144,8 +149,8 @@ class PublishFlowTests(unittest.TestCase):
     def test_attribution_created_offline_when_missing(self):
         import json
         (self.proj / "data" / "animals.json").write_text(json.dumps(
-            {"cat": {"title": "Cat", "url": "https://en.wikipedia.org/wiki/Cat",
-                     "image": "AAAA", "image_file": "Cat.jpg"}}))
+            {"cat": {"title": "Cat", "url": "https://en.wikipedia.org/wiki/Cat", "parser_version": 4,
+                     "image": "AAAA", "image_file": "Cat.jpg", "image_status": "ok"}}))
         (self.proj / "data" / "ATTRIBUTION.md").unlink(missing_ok=True)
         out = io.StringIO()
         with mock.patch("builtins.input", side_effect=["y"]), redirect_stdout(out):
