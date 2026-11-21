@@ -56,7 +56,7 @@ jobs:
           cd dist
           if [ "${{ matrix.target }}" = "windows" ]; then 7z a ../TerminalVelocity-windows.zip . > /dev/null
           else zip -qry ../TerminalVelocity-${{ matrix.target }}.zip .; fi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: steps.sel.outputs.run == '1'
         with:
           name: TerminalVelocity-${{ matrix.target }}
