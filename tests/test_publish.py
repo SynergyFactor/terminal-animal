@@ -21,6 +21,10 @@ class ClassifyTests(unittest.TestCase):
     def test_classify(self):
         c = publish.classify
         self.assertEqual(c("! [rejected] main -> main (fetch first)"), "diverged")
+        gh007 = ("remote: error: GH007: Your push would publish a private email address.\n"
+                 " ! [remote rejected] main -> main (push declined due to email privacy restrictions)")
+        self.assertEqual(c(gh007), "private_email")                  # not "diverged" (the old bug)
+        self.assertEqual(c(" ! [remote rejected] main -> main (pre-receive hook declined)"), "declined")
         self.assertEqual(c("remote: Repository not found.\nfatal: repository 'x' not found"), "not_found")
         self.assertEqual(c("fatal: Authentication failed for 'https://github.com/a/b.git/'"), "auth")
         self.assertEqual(c("remote: Permission to a/b.git denied to c.\nfatal: ... 403"), "auth")
@@ -35,6 +39,10 @@ class ClassifyTests(unittest.TestCase):
         for bad in ("-a", "a-", "a--b", "a b", "x" * 40, "a/b"):
             self.assertFalse(publish.USER_RE.match(bad), bad)
         self.assertTrue(publish.REPO_RE.match("terminal-animal"))
+        for good in ("12345678+SynergyFactor@users.noreply.github.com", "octocat@users.noreply.github.com"):
+            self.assertTrue(publish.NOREPLY_RE.match(good), good)
+        for bad in ("me@gmail.com", "x@users.noreply.github.com.evil.com", "@users.noreply.github.com"):
+            self.assertFalse(publish.NOREPLY_RE.match(bad), bad)
         self.assertFalse(publish.REPO_RE.match("bad name"))
         for f in (".env", "config/.env.local", "keys/server.pem", "id_rsa", "credentials.json"):
             self.assertTrue(publish.SENSITIVE.search(f), f)
@@ -144,6 +152,44 @@ class PublishFlowTests(unittest.TestCase):
             code = publish.main(["--check", "--skip-tests", "--remote-url", str(self.remote)])
         self.assertEqual(code, 0, out.getvalue())
         self.assertIn("File:Cat.jpg", (self.proj / "data" / "ATTRIBUTION.md").read_text())
+
+    def test_private_email_block_is_fixed(self):
+        # Simulate GitHub's GH007 check with a server-side hook on the local "GitHub" repo.
+        hook = self.remote / "hooks" / "pre-receive"
+        hook.write_text(
+            "#!/bin/sh\n"
+            "while read old new ref; do\n"
+            "  for c in $(git rev-list \"$new\" --not --all); do\n"
+            "    case \"$(git log -1 --format=%ae \"$c\")\" in\n"
+            "      *@users.noreply.github.com) ;;\n"
+            "      *) echo 'error: GH007: Your push would publish a private email address.' >&2; exit 1;;\n"
+            "    esac\n"
+            "  done\n"
+            "done\n", newline="\n")
+        hook.chmod(0o755)
+        noreply = "123456+tester@users.noreply.github.com"
+        code, out = self.run_publish(self.FIRST_RUN + ["me@gmail.com", noreply])  # bad, then good
+        self.assertEqual(code, 0, out)
+        self.assertIn("GitHub blocked the upload", out)
+        self.assertNotIn("other work", out)
+        author = subprocess.run(["git", "--git-dir", str(self.remote), "log", "-1", "--format=%ae", "main"],
+                                capture_output=True, text=True, check=True).stdout.strip()
+        self.assertEqual(author, noreply)
+        cfg = subprocess.run(["git", "config", "--global", "user.email"], capture_output=True, text=True)
+        self.assertEqual(cfg.stdout.strip(), noreply)
+
+        # Later upload made with a private email again: only the new commit is re-signed,
+        # history already on GitHub is untouched.
+        first = subprocess.run(["git", "--git-dir", str(self.remote), "rev-parse", "main"],
+                               capture_output=True, text=True, check=True).stdout.strip()
+        subprocess.run(["git", "config", "--global", "user.email", "me@gmail.com"], check=True)
+        (self.proj / "CHANGELOG.md").write_text("changed\n")
+        code, out = self.run_publish(["y", "Second change", noreply])
+        self.assertEqual(code, 0, out)
+        log = subprocess.run(["git", "--git-dir", str(self.remote), "log", "--format=%H %ae", "main"],
+                             capture_output=True, text=True, check=True).stdout.split("\n")
+        self.assertEqual(log[1].split()[0], first)                    # first commit unchanged
+        self.assertTrue(log[0].endswith(noreply))
 
     def test_check_mode_commits_nothing(self):
         out = io.StringIO()

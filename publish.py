@@ -39,6 +39,7 @@ except Exception:  # noqa: BLE001 - publishing shouldn't depend on the app impor
 USER_RE = re.compile(r"^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$")
 REPO_RE = re.compile(r"^[A-Za-z0-9._-]{1,100}$")
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+NOREPLY_RE = re.compile(r"^(\d+\+)?[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})@users\.noreply\.github\.com$", re.I)
 NEVER_UPLOAD = (".venv/", "venv/", "build/", "dist/", "sources/", "__pycache__/", ".idea/", ".vscode/")
 SENSITIVE = re.compile(
     r"(^|/)(\.env(\..*)?|id_rsa.*|id_ed25519.*|.*\.pem|.*\.key|.*\.pfx|.*\.p12|"
@@ -191,6 +192,9 @@ def check_identity() -> None:
     email = git("config", "user.email", check=False).stdout.strip()
     if name and email:
         ok(f"{name} <{email}>")
+        if not NOREPLY_RE.match(email):
+            info("Note: if GitHub blocks this address for privacy, you'll be asked for your")
+            info("      private 'noreply' address and the commit will be fixed automatically.")
         return
     info("Git needs a name and email for commits. They are public on GitHub.")
     info("Tip: use your private GitHub address from GitHub -> Settings -> Emails")
@@ -437,9 +441,18 @@ def set_remote(url: str) -> None:
 
 
 def classify(stderr: str) -> str:
+    """Turn git push's error text into one of a few known problems.
+
+    Order matters: GitHub's specific rejections are checked before the generic ones.
+    """
     s = stderr.lower()
-    if "fetch first" in s or "non-fast-forward" in s or ("rejected" in s and "main" in s):
+    if "gh007" in s or "would publish a private email" in s or "email privacy" in s:
+        return "private_email"
+    if ("fetch first" in s or "non-fast-forward" in s
+            or "updates were rejected because the remote contains work" in s):
         return "diverged"
+    if "remote rejected" in s or "declined" in s or "pre-receive hook" in s:
+        return "declined"                                # GitHub refused for another stated reason
     if "repository not found" in s or "not found" in s and "repository" in s:
         return "not_found"
     if ("authentication failed" in s or "could not read username" in s or "403" in s
@@ -452,6 +465,33 @@ def classify(stderr: str) -> str:
     if "src refspec" in s:
         return "no_commit"
     return "other"
+
+
+def fix_private_email() -> None:
+    """GH007: commits use an email GitHub keeps private. Switch to the noreply address and re-sign
+    the commits that haven't been uploaded yet (already-uploaded history is never rewritten)."""
+    warn("GitHub blocked the upload because the commit shows your personal email, which your "
+         "GitHub settings keep private.")
+    info("Fix: sign commits with your private GitHub 'noreply' address instead.")
+    info("Find it at https://github.com/settings/emails under 'Keep my email addresses private'.")
+    info("It looks like 12345678+YourName@users.noreply.github.com")
+    email = ask("Your GitHub noreply email", validate=lambda v: bool(NOREPLY_RE.match(v)),
+                hint="It must end in @users.noreply.github.com.")
+    git("config", "--global", "user.email", email)
+    if git("config", "--local", "user.email", check=False).stdout.strip():
+        git("config", "--local", "user.email", email)    # a repo-level setting would win otherwise
+    ok(f"Commits will now use {email}")
+
+    # Re-sign only commits not yet on GitHub.
+    upstream = git("rev-parse", "--verify", "--quiet", "origin/main", check=False).returncode == 0
+    base = ["origin/main"] if upstream else ["--root"]
+    r = git("rebase", "--quiet", "--rebase-merges", *base, "--exec",
+            "git commit --amend --no-edit --reset-author --quiet", check=False)
+    if r.returncode != 0:
+        git("rebase", "--abort", check=False)
+        raise Abort("couldn't update the commit email automatically. Run: "
+                    "git commit --amend --reset-author --no-edit   then publish again")
+    ok("Updated the commit(s) to use the new address. Uploading again...")
 
 
 def remote_is_starter_only(repo_name: str) -> bool:
@@ -475,6 +515,9 @@ def push(url: str, repo_name: str) -> None:
         stderr = r.stderr or ""
         print(stderr.strip()[-1500:])
         kind = classify(stderr)
+        if kind == "private_email" and attempt < 2:
+            fix_private_email()
+            continue
         if kind == "diverged":
             if remote_is_starter_only(repo_name):
                 warn("The GitHub repository only contains starter files GitHub created "
@@ -512,6 +555,12 @@ def push(url: str, repo_name: str) -> None:
                         "again (files over 100 MB can't be uploaded).")
         if kind == "no_commit":
             raise Abort("there's nothing committed to upload yet")
+        if kind == "declined":
+            raise Abort("GitHub declined the upload; its reason is in the 'remote:' lines above. "
+                        "Nothing was uploaded.")
+        if kind == "private_email":
+            raise Abort("GitHub still blocks the commit email. Check the address at "
+                        "https://github.com/settings/emails and run publish again.")
         raise Abort("the upload failed (see the message above)")
 
 
