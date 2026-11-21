@@ -72,9 +72,7 @@ The build installs the requirements, asks what to do with the offline cache (see
 PyInstaller. Flags: `--cache {ask,missing,stale,update,rebuild,skip}`, `--fallback {auto,refresh,skip}`, `--delay SECONDS`,
 `--no-install`, `--onedir`. In CI or other non-interactive runs it defaults to `--cache missing`.
 
-PyInstaller can't cross-compile, so each OS has to be built on that OS. To build all three from one
-place, push the repo to GitHub and run the **build** workflow (`.github/workflows/build.yml`).
-It defaults to Windows, and you can pick `windows,macos,linux`.
+PyInstaller can't cross-compile, so each OS has to be built on that OS.
 
 ## Managing the cache
 
@@ -98,20 +96,6 @@ Progress is saved every 5 animals, so you can stop with Ctrl+C and resume with `
 
 You normally won't need any of this after an update. Every record stores the parser version it was
 made with, and the app shows an outdated record straight away while it re-fetches it in the background.
-
-### Request rate
-
-All Wikipedia requests go through one throttle shared by every thread. The app allows at most
-2 requests per second and runs only one live search at a time, waiting 450 ms after you stop typing.
-The cache scraper sends one request per second (change it with `--delay`). On HTTP 429 or 5xx, it
-honours `Retry-After` and backs off exponentially (2, 4, 8, 16, 32 s), pausing every thread. Each
-animal needs 3 requests: the article (text, description, thumbnail URL and Wikidata ID), its
-Wikidata item (scientific name, rank, mass and length), and the image at a standard 330 px width. Anything still incomplete after a 30 s cool-off is retried at
-half speed. Scraping all 150 animals takes about 8 minutes.
-
-Wikimedia asks clients to identify themselves. Set `TV_CONTACT` to your email or project URL
-(e.g. `set TV_CONTACT=you@example.com`) and it's added to the User-Agent. Clients with contact
-details are less likely to be throttled.
 
 ## When Wikipedia doesn't have the number
 
@@ -187,7 +171,7 @@ scripts/build_cache.py     cache manager (menu + flags); scripts/animals.txt is 
 scripts/fallback_data.py   downloads trait databases, builds data/traits.json.gz
 data/                      bundled data: animals.json, traits.json.gz, overrides.csv, ATTRIBUTION.md
 build.py / build.bat / build.sh / cache.* / manager.*   build and launcher scripts
-publish.py / publish.bat / publish.sh                    guided upload to GitHub
+publish.py / publish.bat / publish.sh                    GitHub publish files
 tests/                     python -m unittest discover -s tests  (no Qt or internet needed)
 .github/workflows/         tests on every push/PR; builds (+ releases on v* tags)
 ```
