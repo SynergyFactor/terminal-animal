@@ -32,7 +32,7 @@ jobs:
           TARGET: ${{ matrix.target }}
         run: |
           if [[ ",${TARGETS// /}," == *",${TARGET},"* ]]; then echo "run=1" >> "$GITHUB_OUTPUT"; else echo "run=0" >> "$GITHUB_OUTPUT"; fi
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         if: steps.sel.outputs.run == '1'
         with: { persist-credentials: false }
       - uses: actions/setup-python@v6
